@@ -31,7 +31,7 @@ function photographerFactory(data) {
         //IMG + NAME link
         const photographerLink = document.createElement('a');
         photographerLink.setAttribute('href', '#');
-        photographerLink.setAttribute('aria-label', name)
+        photographerLink.setAttribute('aria-label', `${name} - Profil`)
         photographerLink.appendChild(photographersPicture);
         photographerLink.appendChild(photographerName);
         article.appendChild(photographerLink);
@@ -42,16 +42,20 @@ function photographerFactory(data) {
         const photographerLocation = document.createElement('p');
         photographerLocation.innerText = `${city}, ${country}`;
         article.appendChild(photographerLocation);
+        photographerLocation.classList.add('location');
 
         //Tagline
         const photographerTagline = document.createElement('p');
         photographerTagline.innerText = tagline;
         article.appendChild(photographerTagline);
+        photographerTagline.classList.add('tagline');
+    
 
         //Price
         const photographerPrice = document.createElement('p');
         photographerPrice.innerText = `${price}€/jours`;
         article.appendChild(photographerPrice);
+        photographerPrice.classList.add('price');
 
         return (article);
     }

@@ -97,7 +97,7 @@ header a .logo {
 .photographer_section article img {
     height: 200px;
     width: 200px;
-        border-radius: 50%;
+    border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
 }
