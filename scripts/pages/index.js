@@ -15,9 +15,6 @@
 
 
 
-
-
-
     //fonction qui affiche les données
     async function displayData(photographers) {
         //récupération de l'élement du DOM
@@ -33,9 +30,6 @@
             photographersSection.appendChild(userCardDOM);
         });
     };
-
-
-
 
 
 
