@@ -1,17 +1,17 @@
 function displayMedia(data){
+    
     //cloisonnement des données 
-    const mediaData = data[0];
-    // const caroussel = createCaroussel(mediaData);
+    // const caroussel = createCaroussel(data);
     //boucle qui parcoure le chaque objet du tableau
-    for(i=0; i < mediaData.length; i++) {
+    for(i=0; i < data.length; i++) {
     
     //récupération des valeur des propriété utiles
-        const {image,title,video,likes} = mediaData[i];
+        const {image,title,video,likes} = data[i];
         
         const pictureSection = document.querySelector('.picture-section')
 
         //création objet SI le contenu de l'objet est une VIDEO
-        if(mediaData[i].hasOwnProperty('video')) {
+        if(data[i].hasOwnProperty('video')) {
             
             const pictureArticle = document.createElement('article');
             pictureArticle.classList.add('picture-article');
@@ -51,7 +51,7 @@ function displayMedia(data){
 
         }
         //création éléement SI le contenu de l'objet est une IMAGE
-        else if(mediaData[i].hasOwnProperty('image')){
+        else if(data[i].hasOwnProperty('image')){
 
             const pictureArticle = document.createElement('article');
             pictureArticle.classList.add('picture-article');
@@ -92,6 +92,23 @@ function displayMedia(data){
     }
 
     
+
+    const modalBg = document.querySelector('.bground');
+    const contents = document.querySelectorAll('.content');
+
+    for (let i =0; i < contents.length; i++) {
+        contents[i].addEventListener('click', (elementClicked) => {
+        const elementPosition = elementClicked.target.parentElement.id;
+        createCaroussel(data,elementPosition);
+        // caroussel.style.display = "flex";
+        // modalBg.style.display = "block";
+       
+        }
+    )
 }
+
+
+}
+
 
 
