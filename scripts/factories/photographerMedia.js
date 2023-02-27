@@ -1,7 +1,7 @@
 function displayMedia(data){
     //cloisonnement des données 
     const mediaData = data[0];
-    const caroussel = createCaroussel(mediaData);
+    // const caroussel = createCaroussel(mediaData);
     //boucle qui parcoure le chaque objet du tableau
     for(i=0; i < mediaData.length; i++) {
     
@@ -15,7 +15,8 @@ function displayMedia(data){
             
             const pictureArticle = document.createElement('article');
             pictureArticle.classList.add('picture-article');
-            
+            pictureArticle.setAttribute('id',`${i+1}`);
+
             const videoContent = document.createElement('video');
             videoContent.classList.add('content');
             videoContent.setAttribute('src',`./assets/photographers/Sample Photos/${profileData.name}/${video}`);
@@ -54,6 +55,8 @@ function displayMedia(data){
 
             const pictureArticle = document.createElement('article');
             pictureArticle.classList.add('picture-article');
+            pictureArticle.setAttribute('id',`${i+1}`);
+
             
             const pictureContent = document.createElement('img');
             pictureContent.classList.add('content');
@@ -94,10 +97,15 @@ function displayMedia(data){
     const contents = document.querySelectorAll('.content');
 
     for (let i =0; i < contents.length; i++) {
-        contents[i].addEventListener('click', () => {
-        caroussel.style.display = "block";
-        modalBg.style.display = "block";
+        contents[i].addEventListener('click', (elementClicked) => {
+        const elementPosition = elementClicked.target.parentElement.id;
+        createCaroussel(mediaData,elementPosition);
+        // caroussel.style.display = "flex";
+        // modalBg.style.display = "block";
+       
         }
     )
 }
 }
+
+

@@ -42,3 +42,17 @@
     
     init();
     
+    //Ajout de l'évènement sur les images
+    const modalBg = document.querySelector('.bground');
+    const contents = document.querySelectorAll('.content');
+
+    for (let i =0; i < contents.length; i++) {
+        contents[i].addEventListener('click', (elementClicked) => {
+        const elementPosition = elementClicked.target.parentElement.id;
+        createCaroussel(mediaData,elementPosition);
+        // caroussel.style.display = "flex";
+        // modalBg.style.display = "block";
+       
+        }
+    )
+}
