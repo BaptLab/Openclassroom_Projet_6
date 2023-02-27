@@ -1,10 +1,9 @@
 //factory pattern - fonction entière
 function displayProfile(data) {
 
-    const profileData = data[1];
     
     const photographersHeader = document.querySelector(".photograph-header");
-    const { name, portrait, city, country, tagline, price, id } = profileData; 
+    const { name, portrait, city, country, tagline, price, id } = data; 
     const picture = `./assets/photographers/Sample Photos/Photographers ID Photos/${portrait}`;
 
     //creation du div avec nom/city/country/tagline

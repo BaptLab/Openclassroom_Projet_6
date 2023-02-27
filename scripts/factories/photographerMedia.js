@@ -1,22 +1,17 @@
 function displayMedia(data){
+    
     //cloisonnement des données 
-    const mediaData = data[0];
-<<<<<<< HEAD
-/*     const caroussel = createCaroussel(mediaData);
- */    //boucle qui parcoure le chaque objet du tableau
-=======
-    // const caroussel = createCaroussel(mediaData);
+    // const caroussel = createCaroussel(data);
     //boucle qui parcoure le chaque objet du tableau
->>>>>>> 90f125613645c3abbd8cbd531ec10b6a6ba70f16
-    for(i=0; i < mediaData.length; i++) {
+    for(i=0; i < data.length; i++) {
     
     //récupération des valeur des propriété utiles
-        const {image,title,video,likes} = mediaData[i];
+        const {image,title,video,likes} = data[i];
         
         const pictureSection = document.querySelector('.picture-section')
 
         //création objet SI le contenu de l'objet est une VIDEO
-        if(mediaData[i].hasOwnProperty('video')) {
+        if(data[i].hasOwnProperty('video')) {
             
             const pictureArticle = document.createElement('article');
             pictureArticle.classList.add('picture-article');
@@ -56,16 +51,12 @@ function displayMedia(data){
 
         }
         //création éléement SI le contenu de l'objet est une IMAGE
-        else if(mediaData[i].hasOwnProperty('image')){
+        else if(data[i].hasOwnProperty('image')){
 
             const pictureArticle = document.createElement('article');
             pictureArticle.classList.add('picture-article');
-<<<<<<< HEAD
-            pictureArticle.setAttribute('id', i+1);
-=======
             pictureArticle.setAttribute('id',`${i+1}`);
 
->>>>>>> 90f125613645c3abbd8cbd531ec10b6a6ba70f16
             
             const pictureContent = document.createElement('img');
             pictureContent.classList.add('content');
@@ -102,31 +93,22 @@ function displayMedia(data){
 
     
 
-/*     const modalBg = document.querySelector('.bground');
- */
+    const modalBg = document.querySelector('.bground');
     const contents = document.querySelectorAll('.content');
-    const contentID = contents.id;
-    console.log(contentID);
 
     for (let i =0; i < contents.length; i++) {
-<<<<<<< HEAD
-        contents[i].addEventListener('click', () => {
-        
-        createCaroussel(contents, contentID)
-
-        /* caroussel.style.display = "block";
-        modalBg.style.display = "block"; */
-=======
         contents[i].addEventListener('click', (elementClicked) => {
         const elementPosition = elementClicked.target.parentElement.id;
-        createCaroussel(mediaData,elementPosition);
+        createCaroussel(data,elementPosition);
         // caroussel.style.display = "flex";
         // modalBg.style.display = "block";
        
->>>>>>> 90f125613645c3abbd8cbd531ec10b6a6ba70f16
         }
     )
 }
+
+
 }
+
 
 
