@@ -1,8 +1,8 @@
 function displayMedia(data){
     //cloisonnement des données 
     const mediaData = data[0];
-    const caroussel = createCaroussel(mediaData);
-    //boucle qui parcoure le chaque objet du tableau
+/*     const caroussel = createCaroussel(mediaData);
+ */    //boucle qui parcoure le chaque objet du tableau
     for(i=0; i < mediaData.length; i++) {
     
     //récupération des valeur des propriété utiles
@@ -54,6 +54,7 @@ function displayMedia(data){
 
             const pictureArticle = document.createElement('article');
             pictureArticle.classList.add('picture-article');
+            pictureArticle.setAttribute('id', i+1);
             
             const pictureContent = document.createElement('img');
             pictureContent.classList.add('content');
@@ -90,13 +91,19 @@ function displayMedia(data){
 
     
 
-    const modalBg = document.querySelector('.bground');
+/*     const modalBg = document.querySelector('.bground');
+ */
     const contents = document.querySelectorAll('.content');
+    const contentID = contents.id;
+    console.log(contentID);
 
     for (let i =0; i < contents.length; i++) {
         contents[i].addEventListener('click', () => {
-        caroussel.style.display = "block";
-        modalBg.style.display = "block";
+        
+        createCaroussel(contents, contentID)
+
+        /* caroussel.style.display = "block";
+        modalBg.style.display = "block"; */
         }
     )
 }
