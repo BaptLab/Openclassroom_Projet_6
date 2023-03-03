@@ -14,9 +14,6 @@
         });
 
         return filteredData = [filteredmediaData, profileData = filteredPhotographerData[0]];
-        /* retourne un tableau avec :
-        [0] = données relatives au TRAVAIL du photographe
-        [1] = données relatives au PROFIL du photographe */
 
     } else {
       alert('Les données n\'ont pas pu être récupérées')
@@ -24,7 +21,33 @@
   }
   
 
+function likeInteraction () {
+  const likeBtn = document.querySelectorAll('.like-btn');
+      for(let i = 0; i<likeBtn.length; i++)
+      likeBtn[i].addEventListener('click', () => {
+        if (likeBtn[i].classList.contains("fa-regular"))  
+        {
+          let totalLike = document.querySelector('#likes-total');
+          let actualTotal = parseInt(totalLike.textContent);
+          actualTotal = actualTotal + 1;
+          totalLike.innerText = actualTotal;
+          likeBtn[i].classList.add('fa-solid');
+          likeBtn[i].classList.remove('fa-regular');
+        }
+        else if (likeBtn[i].classList.contains("fa-solid"))
+        {
+          let totalLike = document.querySelector('#likes-total');
+          let actualTotal = parseInt(totalLike.textContent);
+          actualTotal = actualTotal -1;
+          totalLike.innerText = actualTotal;
+          likeBtn[i].classList.remove('fa-solid');
+          likeBtn[i].classList.add('fa-regular');
+        }
+      });
+  
+}
 
+  
 
 async function init() {
 
@@ -33,10 +56,14 @@ async function init() {
 
     displayProfile(profileData);
     displayMedia(mediaData);
+    likeInteraction();
+
+    
 
 };
 
 init(); 
+
 
 
 
@@ -97,3 +124,4 @@ dateBtn.addEventListener('change', (e) => {
     orderByTitle();
   }
 });
+

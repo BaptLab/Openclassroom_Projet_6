@@ -11,7 +11,9 @@
   <body>
     <div class="container">
       <header>
-        <img src="assets/images/logo.png" class="logo" />
+        <a href="./index.html">
+          <img src="assets/images/logo.png" class="logo" />
+       </a>
       </header>
       <main id="main">
         <div class="photograph-header">
@@ -20,23 +22,24 @@
         <div class="sort-section">
           <p class="sort-label">Trier par</p>
           <select id="sort-btn" name="sort-option">
-            <option id="popularity-btn" value="Popularité">Popularité</option>
-            <option id="date-btn" value="Date">Date</option>
+            <option selected="selected" id="date-btn" value="Date">Date</option>
+            <option  id="popularity-btn" value="Popularité">Popularité</option>
             <option id="titke-btn" value="Titre">Titre</option>
           </select>
         </div>
         <div class="picture-section"></div>
         <div class="bground"></div>
         <aside>
-          <p>297 081</p>
-          <i class="fa-regular fa-heart heart"></i>
-          <p>300€ / jour</p>
+          <p id="likes-total"></p>
+          <i class="fa-solid fa-heart heart fa-xl"></i>
+          <p id="price"></p>
         </aside>
       </main>
       <div id="contact_modal">
         <div class="modal">
           <header>
-            <h2>Contactez-moi</h2>
+            <h2></h2>
+            <p id="contact-name"></p>
             <img src="assets/icons/close.svg" onclick="closeModal()" />
           </header>
           <form>

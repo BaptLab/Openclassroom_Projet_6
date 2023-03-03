@@ -7,8 +7,9 @@ function displayMedia(data){
     
     //récupération des valeur des propriété utiles
         const {image,title,video,likes} = data[i];
-        
         const pictureSection = document.querySelector('.picture-section')
+        
+        
 
         //création objet SI le contenu de l'objet est une VIDEO
         if(data[i].hasOwnProperty('video')) {
@@ -20,7 +21,6 @@ function displayMedia(data){
             const videoContent = document.createElement('video');
             videoContent.classList.add('content');
             videoContent.setAttribute('src',`./assets/photographers/Sample Photos/${profileData.name}/${video}`);
-            videoContent.setAttribute('controls', '');
             
             const pictureDescription = document.createElement('p');
             pictureDescription.innerText = title;
@@ -29,6 +29,8 @@ function displayMedia(data){
             likesCount.innerText = likes;
 
             const heart = document.createElement('i');
+            heart.classList.add('no-liked');
+            heart.classList.add('like-btn');
             heart.classList.add('fa-regular');
             heart.classList.add('fa-heart');
 
@@ -66,9 +68,12 @@ function displayMedia(data){
             pictureDescription.innerText = title;
             
             const likesCount = document.createElement('p');
+            likesCount.classList.add('likes');
             likesCount.innerText = likes;
 
             const heart = document.createElement('i');
+            heart.classList.add('like-btn');
+            heart.classList.add('no-liked');
             heart.classList.add('fa-regular');
             heart.classList.add('fa-heart');
 
@@ -91,7 +96,27 @@ function displayMedia(data){
 
     }
 
+    //Compteur de likes
+    const allLikes = document.querySelectorAll('p.likes');
+    let totalLikes = 0;
     
+        for (let i = 0; i < allLikes.length; i++) {
+            const likes = parseInt(allLikes[i].textContent);
+            if (!isNaN(likes)) {
+                totalLikes += likes;
+            }
+        }
+
+    //display du total dans le DOM
+    document.querySelector('#likes-total').innerText = totalLikes;
+    
+
+
+    
+    //like interaction
+    
+
+
 
     const modalBg = document.querySelector('.bground');
     const contents = document.querySelectorAll('.content');

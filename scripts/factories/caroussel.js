@@ -17,21 +17,39 @@ function createCaroussel(data, elementPosition) {
     let i = elementPosition-1 
 
     //Récupération des données utiles
-    const {image, video} = data[i];
+    const {image, video, title} = data[i];
 
     //si le contenu est une vidéo
     if(data[i].hasOwnProperty('video')) {
         const carousselElement = document.createElement('video');
         carousselElement.setAttribute('src',`./assets/photographers/Sample Photos/${profileData.name}/${video}`);
-        carousselElement.setAttribute('id',`element${i+1}`);            carousselElement.classList.add('caroussel-element');
+        carousselElement.setAttribute('id',`element${i+1}`);            
+        carousselElement.classList.add('caroussel-element');
+        //carousselElement.setAttribute('controls', '');
+        carousselElement.setAttribute('autoplay', '');
+
+        const carousselElementDescription = document.createElement('p');
+        carousselElementDescription.classList.add('caroussel-element-description');
+        carousselElementDescription.innerText = title;
+
         carousselContainer.appendChild(carousselElement);
+        carousselContainer.appendChild(carousselElementDescription);
+
         }
     //si le contenu est une image
     else if(data[i].hasOwnProperty('image')) {
         const carousselElement = document.createElement('img');
         carousselElement.setAttribute('src', `./assets/photographers/Sample Photos/${profileData.name}/${image}`);
-        carousselElement.setAttribute('id',`element${i}`);            carousselElement.classList.add('caroussel-element');
+        carousselElement.setAttribute('id',`element${i}`);            
+        carousselElement.classList.add('caroussel-element');
+
+        const carousselElementDescription = document.createElement('p');
+        carousselElementDescription.classList.add('caroussel-element-description');
+        carousselElementDescription.innerText = title;
+
         carousselContainer.appendChild(carousselElement);
+        carousselContainer.appendChild(carousselElementDescription);
+
         }
 
     caroussel.style.display = "flex";

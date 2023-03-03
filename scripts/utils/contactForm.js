@@ -1,12 +1,17 @@
-function displayModal() {
+async function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
+
+    data = await getPhotographers();
+    nameOfPhotographer = data[1].name;
+    document.querySelector("header h2").innerText = `Contactez-moi ${nameOfPhotographer}`;
 }
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
+
 
 //Récupération des inputs 
 

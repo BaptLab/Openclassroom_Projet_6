@@ -93,6 +93,10 @@ body {
     cursor: pointer;
 }
 
+#send-button {
+    margin: 0px;
+}
+
 #contact_modal {
     display: none;
 }
@@ -100,7 +104,8 @@ body {
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 30%;
+    width: 669px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,12 +128,14 @@ body {
     display: flex;
     justify-content: start;
     height: 42px;
+    margin-top: 14px;
 }
 
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    text-align: start;
+    margin-bottom: 15px;
 }
 
 form {
@@ -159,6 +166,10 @@ form input {
     background-color: white;
 }
 
+form  #msg {
+    height: 150px;
+}
+
 .sort-section .sort-label {
     font-size: 1.125em;
     font-weight: 700;
@@ -167,10 +178,18 @@ form input {
 
 .sort-section select {
     all: unset;
-    display: flex;
+    width: 170px;
+    height: 69px;
+    text-align: center;
     align-items: center;
+    background-color: #901C1C;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
 /*     padding: 23px 60px 14px 20px; */
 }
+
+
 
 
 
@@ -187,6 +206,7 @@ form input {
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .picture-section article .article-description {
@@ -194,6 +214,7 @@ form input {
     justify-content: space-between;
     color: #901C1C;
     font-size: 1.5em;
+    margin-top: 7px;
 }
 
 .picture-section article .article-description .count-section {
@@ -201,13 +222,16 @@ form input {
 }
 .picture-section article .article-description .count-section i{
     display: flex;
-    align-items: center;
+    align-items: self-start;
+    margin-top: 3px;
 }
 
 .picture-section article .article-description p {
     padding-right: 10px;
 
 }
+
+
 
 .caroussel {
     width: 850px;
@@ -229,8 +253,13 @@ form input {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    border-radius: 5px;
 }
 
+.caroussel .caroussel-element-description {
+    color: white;
+    font-size: 1.5em;
+}
 
 .bground {
     display: none;
@@ -246,27 +275,33 @@ form input {
 
 .close-caroussel {
     position: absolute;
-    right: -50px;
+    right: -75px;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
 }
 
 .right-arrow {
     position: absolute;
     filter: invert(1);
-    height: 60px;
+    width: 42px;
     top: 50%;
-    width: auto;
-    right: -50px;
+    height: auto;
+    right: -70px;
+    cursor: pointer;
+    color: #911C1C;
 }
 
 
 .left-arrow {
     position: absolute;
     filter: invert(1);
-    height: 60px;
+    width: 42px;
     top: 50%;
-    left: -60px;
+    left: -70px;
     rotate: 180deg;
-    width: auto;
+    height: auto;
+    cursor: pointer;
 }
 
 aside {

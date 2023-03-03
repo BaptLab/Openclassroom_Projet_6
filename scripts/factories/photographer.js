@@ -15,12 +15,10 @@ function photographerFactory(data) {
         photographersPicture.setAttribute("src", picture)
         photographersPicture.setAttribute("alt", '' )
         
-
         //Name
         const photographerName = document.createElement( 'h2' );
         photographerName.textContent = name;
         
-
         //IMG + NAME link
         const photographerLink = document.createElement('a');
         photographerLink.setAttribute('href', '#');
@@ -29,8 +27,6 @@ function photographerFactory(data) {
         photographerLink.appendChild(photographerName);
         article.appendChild(photographerLink);
         
-
-
         //Country + City
         const photographerLocation = document.createElement('p');
         photographerLocation.innerText = `${city}, ${country}`;
@@ -43,7 +39,6 @@ function photographerFactory(data) {
         article.appendChild(photographerTagline);
         photographerTagline.classList.add('tagline');
     
-
         //Price
         const photographerPrice = document.createElement('p');
         photographerPrice.innerText = `${price}€/jours`;
@@ -53,17 +48,14 @@ function photographerFactory(data) {
         //ID
         article.setAttribute('id', id)
 
-
         //Creation du lien de redirection 
         article.addEventListener('click', (event) =>{
             let urlProfile = `../../photographer.html?id=${id}`;
             photographerLink.setAttribute('href', urlProfile)
         })
 
-
         return (article);
     }
 
-    //renvoi un objet à la fin !
     return { name, picture, getUserCardDOM }
 }

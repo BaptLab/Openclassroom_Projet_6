@@ -38,9 +38,15 @@
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
         displayData(photographers);
+
+        
     };
     
     init();
+
+    document.querySelector(".contact_button").addEventListener('click', () => {
+        displayModal(photographers);
+      })
     
     //Ajout de l'évènement sur les images
     const modalBg = document.querySelector('.bground');

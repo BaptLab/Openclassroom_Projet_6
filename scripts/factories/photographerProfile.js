@@ -43,20 +43,7 @@ function displayProfile(data) {
     //Tagline
     photographerTagline.classList.add('tagline');
 
-        //Price
-       /*  const photographerPrice = document.createElement('p');
-        photographerPrice.innerText = `${price}€/jours`;
-        article.appendChild(photographerPrice);
-        photographerPrice.classList.add('price'); */
-
-        //ID
-        /* article.setAttribute('id', id) */
-
-
-        //Creation du lien de redirection 
-        /* article.addEventListener('click', (event) =>{
-            let urlProfile = `../../photographer.html?id=${id}`;
-            photographerLink.setAttribute('href', urlProfile)
-        }) */
+    //Price
+    document.querySelector('#price').innerText = `${price}€/jours`;
 
     }
