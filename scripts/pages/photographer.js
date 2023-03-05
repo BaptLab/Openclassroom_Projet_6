@@ -65,9 +65,59 @@ async function init() {
 init(); 
 
 
+window.addEventListener('click', (e) => {
+  if(e.target !== document.querySelector('.option-selected')) {
+    closeOptions()
+  }
+});
 
 
-//done
+
+
+
+
+//fermeture modale de tri
+function closeOptions() {
+  document.querySelector('.select-menu').style.display = "none";
+}
+
+//ouverture modale de tri
+function displayOptions() {
+  document.querySelector('.select-menu').style.display = "flex";
+}
+
+
+//event ouverture modale de tri
+const currentOption = document.querySelector('.option-selected');
+currentOption.addEventListener('click', displayOptions);
+
+
+//event tri par date
+const dateOption = document.querySelector('#date');
+dateOption.addEventListener('click', ()=> {
+  closeOptions();
+  orderByDate();
+  currentOption.innerText = dateOption.innerText;
+})
+
+//event tri par popularité
+const popularityOption = document.querySelector('#popularity');
+popularityOption.addEventListener('click', ()=> {
+  closeOptions();
+  orderByPopularity();
+  currentOption.innerText = popularityOption.innerText;
+})
+
+//event tri par titre
+const titreOption = document.querySelector('#title');
+titreOption.addEventListener('click', ()=> {
+  closeOptions();
+  orderByTitle();
+  currentOption.innerText = titreOption.innerText;
+})
+
+
+//tri par popularité
 async function orderByPopularity() {
 
   const allData =  await getPhotographers()
@@ -79,9 +129,10 @@ async function orderByPopularity() {
   })
   document.querySelector('.picture-section').innerHTML = "";
   displayMedia(orderedData);
+  likeInteraction();
 }
 
-//done
+//tri par date
 async function orderByDate() {
 
   const allData =  await getPhotographers()
@@ -93,9 +144,11 @@ async function orderByDate() {
   })
   document.querySelector('.picture-section').innerHTML = "";
   displayMedia(orderedData);
+  likeInteraction();
+
 }
 
-//done
+//tri par titre
 async function orderByTitle() {
   
   const allData = await getPhotographers();
@@ -108,20 +161,6 @@ async function orderByTitle() {
 })
   document.querySelector('.picture-section').innerHTML = "";
   displayMedia(orderedData);
+  likeInteraction();
+
 }
-
-//done
-const dateBtn = document.querySelector('#sort-btn');
-dateBtn.addEventListener('change', (e) => {
-  console.log(e.target.value)
-  if (e.target.value === 'Popularité') {
-    orderByPopularity();
-  }
-  if (e.target.value === 'Date') {
-    orderByDate();
-  }
-  if (e.target.value === 'Titre') {
-    orderByTitle();
-  }
-});
-

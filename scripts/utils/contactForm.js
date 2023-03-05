@@ -37,3 +37,10 @@ sendFrom.addEventListener('click', (e) => {
     e.preventDefault();
     console.log(firstName, lastName, mail, msg);
 })
+
+window.addEventListener('click', (e) => {
+    if (!e.target.closest('.modal') && e.target !== document.querySelector('.contact_button')) {
+      closeModal()
+    }
+  })
+  
