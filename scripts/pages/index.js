@@ -3,7 +3,7 @@
     
     //Fonctions qui récupère les données
     async function getPhotographers() {
-        let photographers = await fetch('../../data/photographers.json');   
+        let photographers = await fetch('./data/photographers.json');   
         if(photographers.ok) {
             let data = photographers.json();
             return data;
