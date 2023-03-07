@@ -21,27 +21,46 @@
   }
   
 
+
+
 function likeInteraction () {
+
+  
+  //incrémentation du total des likes au compteur général
   const likeBtn = document.querySelectorAll('.like-btn');
       for(let i = 0; i<likeBtn.length; i++)
       likeBtn[i].addEventListener('click', () => {
         if (likeBtn[i].classList.contains("fa-regular"))  
         {
+          //incrément du compteur local
+          const localCount = likeBtn[i].previousElementSibling;
+          localCount.innerHTML  = parseInt(localCount.textContent)+1;
+
+          //changement de style du coeur
+          likeBtn[i].classList.add('fa-solid');
+          likeBtn[i].classList.remove('fa-regular');
+
+          //Incrément du compteur général
           let totalLike = document.querySelector('#likes-total');
           let actualTotal = parseInt(totalLike.textContent);
           actualTotal = actualTotal + 1;
           totalLike.innerText = actualTotal;
-          likeBtn[i].classList.add('fa-solid');
-          likeBtn[i].classList.remove('fa-regular');
         }
         else if (likeBtn[i].classList.contains("fa-solid"))
         {
+          //incrément du compteur local
+          const localCount = likeBtn[i].previousElementSibling;
+          localCount.innerHTML  = parseInt(localCount.textContent)-1;
+
+          //maj du style du coeur
+          likeBtn[i].classList.remove('fa-solid');
+          likeBtn[i].classList.add('fa-regular');
+
+          //incrément du compteur général
           let totalLike = document.querySelector('#likes-total');
           let actualTotal = parseInt(totalLike.textContent);
           actualTotal = actualTotal -1;
           totalLike.innerText = actualTotal;
-          likeBtn[i].classList.remove('fa-solid');
-          likeBtn[i].classList.add('fa-regular');
         }
       });
   
