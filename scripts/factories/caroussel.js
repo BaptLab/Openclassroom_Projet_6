@@ -25,7 +25,7 @@ function createCaroussel(data, elementPosition) {
         carousselElement.setAttribute('src',`./assets/photographers/Sample Photos/${profileData.name}/${video}`);
         carousselElement.setAttribute('id',`element${i+1}`);            
         carousselElement.classList.add('caroussel-element');
-        //carousselElement.setAttribute('controls', '');
+        carousselElement.setAttribute('controls', '');
         carousselElement.setAttribute('autoplay', '');
 
         const carousselElementDescription = document.createElement('p');

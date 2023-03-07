@@ -93,8 +93,17 @@ body {
     cursor: pointer;
 }
 
+.contact_button:hover {
+    background-color: #DB8876;
+    color: black;
+}
+
 #send-button {
     margin: 0px;
+}
+
+#send-button:hover {
+    border: 1.5px solid black;
 }
 
 #contact_modal {
@@ -250,6 +259,7 @@ form  #msg {
     position: absolute;
     top: 0px;
     display: none;
+    z-index: 1;
 }
 
 .option {
@@ -312,6 +322,7 @@ form  #msg {
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
+    -webkit-transform: translateZ(0) 
 }
 
 .picture-section article .article-description {
