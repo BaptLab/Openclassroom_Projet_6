@@ -349,7 +349,7 @@ form  #msg {
 
 
 
-.caroussel {
+.lightbox {
     width: 850px;
     height: 700px;
     border-radius: 5px;
@@ -361,18 +361,18 @@ form  #msg {
     display: none;
 }
 
-.caroussel .caroussel-container {
+.lightbox .lightbox-container {
     height: 100%;
     width: 100%;}
 
-.caroussel .caroussel-element {
+.lightbox .lightbox-element {
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.caroussel .caroussel-element-description {
+.lightbox .lightbox-element-description {
     color: white;
     font-size: 1.5em;
 }
@@ -389,13 +389,15 @@ form  #msg {
     background-color: rgba(0, 0, 0, 0.555);
   }
 
-.close-caroussel {
+.close-lightbox {
     position: absolute;
     right: -75px;
     cursor: pointer;
     height: 50px;
     width: 50px;
+    top:0px;
 }
+
 
 .right-arrow {
     position: absolute;

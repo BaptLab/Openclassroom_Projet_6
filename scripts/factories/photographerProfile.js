@@ -1,7 +1,6 @@
-//factory pattern - fonction entière
+/*factory pattern pour la génération du profil du photographe sur sa page personnelle*/
 function displayProfile(data) {
 
-    
     const photographersHeader = document.querySelector(".photograph-header");
     const { name, portrait, city, country, tagline, price, id } = data; 
     const picture = `./assets/photographers/Sample Photos/Photographers ID Photos/${portrait}`;
@@ -26,16 +25,14 @@ function displayProfile(data) {
     infos.appendChild(photographerLocation);
     infos.appendChild(photographerTagline);
 
-        //Img
+    //Img
     const photographersPicture = document.createElement( 'img' );
     photographersPicture.setAttribute("src", picture)
     photographersPicture.setAttribute("alt", '' )
 
-
     //Append to the DOM
     photographersHeader.prepend(infos);
     photographersHeader.appendChild(photographersPicture);
-
 
     //Country + City
     photographerLocation.classList.add('location');
@@ -45,5 +42,4 @@ function displayProfile(data) {
 
     //Price
     document.querySelector('#price').innerText = `${price}€/jours`;
-
-    }
+}

@@ -1,4 +1,4 @@
-//factory pattern - fonction entière
+/*factory pattern pour afficher les différents profils de photograhes sur la page d'accueil*/
 function photographerFactory(data) {
     
     const { name, portrait, city, country, tagline, price, id } = data; // => name = data.name & portrait = data.portrait --> nouvel syntaxe es6
