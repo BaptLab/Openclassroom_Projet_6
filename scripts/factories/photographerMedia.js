@@ -26,6 +26,10 @@ function displayMedia(data){
             videoContent.classList.add('content');
             videoContent.setAttribute('src',`./assets/photographers/Sample Photos/${profileData.name}/${video}`);
             videoContent.setAttribute('alt', title);
+            //accessibilité
+            videoContent.setAttribute('tabindex','0');
+            videoContent.setAttribute('onkeyup', 'onKeyUp(event)');
+            
             
             //Création de la section description (conteneur)
             const articleDescriptionSection = document.createElement('div');
@@ -44,15 +48,20 @@ function displayMedia(data){
             likesCount.innerText = likes;
 
             const heart = document.createElement('i');
+            heart.setAttribute('aria-label', 'likes');
             heart.classList.add('no-liked');
             heart.classList.add('like-btn');
             heart.classList.add('fa-regular');
             heart.classList.add('fa-heart');
+            //accessibilité
+            heart.setAttribute('tabindex','0');
+            heart.setAttribute('onkeyup', 'onKeyUp(event)');
 
             //Ajout du coeur et compteur à la partie likes
             countSection.appendChild(likesCount);
             countSection.appendChild(heart);
 
+ 
             /*Append*/
 
             //Ajout de la partie like & description à la section description
@@ -79,6 +88,9 @@ function displayMedia(data){
             pictureContent.classList.add('content');
             pictureContent.setAttribute('src', `./assets/photographers/Sample Photos/${profileData.name}/${image}`)
             pictureContent.setAttribute('alt', title);
+            //accessibilité
+            pictureContent.setAttribute('tabindex','0');
+            pictureContent.setAttribute('onkeyup', 'onKeyUp(event)');
 
             const articleDescriptionSection = document.createElement('div');
             articleDescriptionSection.classList.add('article-description');
@@ -91,11 +103,15 @@ function displayMedia(data){
             likesCount.innerText = likes;
 
             const heart = document.createElement('i');
+            heart.setAttribute('aria-label', 'likes');
             heart.classList.add('like-btn');
             heart.classList.add('no-liked');
             heart.classList.add('fa-regular');
             heart.classList.add('fa-heart');
-
+            //accessibilité
+            heart.setAttribute('tabindex','0');
+            heart.setAttribute('onkeyup', 'onKeyUp(event)');
+       
             const countSection = document.createElement('div');
             countSection.classList.add('count-section');
             countSection.appendChild(likesCount);

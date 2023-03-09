@@ -2,6 +2,7 @@
 async function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
+    document.querySelector('#first-name').focus();
 
     //récupération de la donnée "name" relative au photographe en question
     data = await getPhotographers();

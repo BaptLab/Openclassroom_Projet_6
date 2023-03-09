@@ -342,6 +342,10 @@ form  #msg {
     margin-top: 3px;
 }
 
+.picture-section article .article-description .count-section i:hover{
+    cursor: pointer;
+}
+
 .picture-section article .article-description p {
     padding-right: 10px;
 
@@ -361,9 +365,13 @@ form  #msg {
     display: none;
 }
 
+
+
 .lightbox .lightbox-container {
     height: 100%;
     width: 100%;}
+
+
 
 .lightbox .lightbox-element {
     height: 100%;

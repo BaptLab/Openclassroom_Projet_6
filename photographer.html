@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="./css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -12,51 +12,51 @@
     <div class="container">
       <header>
         <a href="./index.html">
-          <img src="assets/images/logo.png" class="logo" />
+          <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
        </a>
       </header>
       <main id="main">
         <div class="photograph-header">
-          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
         </div>
         <div class="sort-section">
           <p class="sort-label">Trier par</p>
-          <div class="selection">
-            <p class="option-selected">Date</p>
-            <div class="select-menu">
-              <p id="date" class="option">Date</p>
-              <p id="popularity" class="option">Popularité</p>
-              <p id="title" class="option">Titre</p>
+          <div role="button" aria-haspopup="listbox" aria-expanded="false" class="selection">
+            <p class="option-selected" tabindex="0" onkeyup="onKeyUp(event)">Date</p>
+            <div aria-activedescendant="date" role="listbox" class="select-menu">
+              <p id="date" class="option" aria-selected="true" tabindex="0" onkeyup="onKeyUp(event)" aria-label="Trier par date">Date</p>
+              <p id="popularity" class="option" aria-selected="false" tabindex="0" onkeyup="onKeyUp(event)" aria-label="Trier par popularité">Popularité</p>
+              <p id="title" class="option" aria-selected="false" tabindex="0" onkeyup="onKeyUp(event)" aria-label="Trier par titre">Titre</p>
             </div>
           </div>
         </div>
         <div class="picture-section"></div>
-        <div class="bground"></div>
+        <div class="bground" aria-label="image closeup view"></div>
         <aside>
           <p id="likes-total"></p>
-          <i class="fa-solid fa-heart heart fa-xl"></i>
+          <i aria-label="likes" class="fa-solid fa-heart heart fa-xl"></i>
           <p id="price"></p>
         </aside>
       </main>
       <div id="contact_modal">
         <div class="modal">
           <header>
-            <h2></h2>
+            <h2>Contactez-moi</h2>
             <p id="contact-name"></p>
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
+            <img alt="Croix de fermeture" aria-label="Fermer la modale de contact" src="assets/icons/close.svg" onclick="closeModal()" onkeyup="onKeyUp(event)" tabindex="0"/>
           </header>
           <form>
             <div>
-              <label>Prénom</label>
-              <input type="text" id="first-name" class="input-modal" required>
-              <label>Nom</label>
-              <input type="text" id="last-name" class="input-modal" required>
-              <label>Email</label>
-              <input type="text" id="mail" class="input-modal" required>
-              <label>Votre Message</label>
-              <input type="text" id="msg" class="input-modal" required>
+              <label id="prenom">Prénom</label>
+              <input aria-labelledby="prenom" type="text" id="first-name" class="input-modal" required>
+              <label id="nom">Nom</label>
+              <input aria-labelledby="nom" type="text" id="last-name" class="input-modal" required>
+              <label id="email">Email</label>
+              <input aria-labelledby="email" type="te xt" id="mail" class="input-modal" required>
+              <label id="message">Votre Message</label>
+              <input aria-labelledby="message" type="text" id="msg" class="input-modal" required>
             </div>
-            <button class="contact_button" id="send-button">Envoyer</button>
+            <button aria-label="Envoi du formulaire" class="contact_button" id="send-button">Envoyer</button>
           </form>
         </div>
       </div>
@@ -64,7 +64,7 @@
     <script src="./scripts/factories/photographerProfile.js"></script>
     <script src="./scripts/factories/lightbox.js"></script>
     <script src="./scripts/factories/photographerMedia.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="./scripts/pages/photographer.js"></script>
+    <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>

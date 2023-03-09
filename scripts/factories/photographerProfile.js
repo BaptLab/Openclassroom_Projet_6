@@ -28,7 +28,7 @@ function displayProfile(data) {
     //Img
     const photographersPicture = document.createElement( 'img' );
     photographersPicture.setAttribute("src", picture)
-    photographersPicture.setAttribute("alt", '' )
+    photographersPicture.setAttribute("alt", name )
 
     //Append to the DOM
     photographersHeader.prepend(infos);

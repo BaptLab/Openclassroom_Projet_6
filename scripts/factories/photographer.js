@@ -50,7 +50,7 @@ function photographerFactory(data) {
 
         //Creation du lien de redirection 
         article.addEventListener('click', (event) =>{
-            let urlProfile = `../../photographer.html?id=${id}`;
+            let urlProfile = `./photographer.html?id=${id}`;
             photographerLink.setAttribute('href', urlProfile)
         })
 

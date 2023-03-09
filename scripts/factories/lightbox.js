@@ -1,6 +1,7 @@
 /*Factory pattern de création des éléments lightBox*/
 function createLightbox(data, elementPosition) {
 
+
     //Récupération du DOM pour futur append
     const modalBg = document.querySelector('.bground');
     modalBg.style.display = "block";
@@ -8,6 +9,9 @@ function createLightbox(data, elementPosition) {
     //création de la section relatif au contenu lightbox et ajout au DOM
     const lightbox = document.createElement('div')
     lightbox.style.display = "block";
+    lightbox.setAttribute('open', '');
+    
+
     modalBg.appendChild(lightbox);
 
     //création d'un conteneur pour les élements ligthbox
@@ -68,13 +72,22 @@ function createLightbox(data, elementPosition) {
     /*Event de Fermeture lightbox & modalbg*/
     const closelightbox = document.createElement('img');
     closelightbox.setAttribute('src', './assets/icons/close.svg');
+    //accessibilité
+    closelightbox.setAttribute('tabindex','0');
+    closelightbox.setAttribute('onkeyup', 'onKeyUp(event)');
+    closelightbox.setAttribute('aria-label', 'Close dialog');
     closelightbox.classList.add('close-lightbox');
     lightbox.appendChild(closelightbox);
 
-    closelightbox.addEventListener('click', () => {
+    function closinglightbox() {
         lightbox.style.display = 'none';
+        lightbox.removeAttribute('open', '');
         modalBg.style.display = "none";
-    })
+    }
+
+    closelightbox.addEventListener('click', closinglightbox);
+    
+   
 
 
     /*Navigation dans les élements lightbox*/
@@ -98,11 +111,20 @@ function createLightbox(data, elementPosition) {
 
     const rightArrow = document.createElement('img');
     rightArrow.setAttribute('src', './assets/icons/arrow.png');
+    //accessibilité
+    rightArrow.setAttribute('tabindex','0');
+    rightArrow.setAttribute('onkeyup', 'onKeyUp(event)');
+    rightArrow.setAttribute('aria-label', 'Next Image');
     rightArrow.classList.add('right-arrow');
 
     const leftArrow = document.createElement('img');
+    //accessibilité
+    leftArrow.setAttribute('tabindex','0');
+    leftArrow.setAttribute('onkeyup', 'onKeyUp(event)');
     leftArrow.setAttribute('src', './assets/icons/arrow.png');
+    leftArrow.setAttribute('aria-label', 'Previous Image');
     leftArrow.classList.add('left-arrow');
+    
 
     //event en cas de clic sur les flêches
     rightArrow.addEventListener('click', nextSlide);
@@ -110,18 +132,27 @@ function createLightbox(data, elementPosition) {
 
     //event de pression des touches <- & -> du clavier
     document.addEventListener("keydown", (event)=> {
-        if (event.keyCode === 39) {
+        if (event.key === 'ArrowRight') {
             nextSlide();
         }
-        else if (event.keyCode === 37) {
+        if (event.key === "ArrowLeft") {
             previousSlide();
+        }
+        if (event.key === "Escape") {
+            closinglightbox();
         }
     });
     
     /*ajout des flêches au DOM*/
     lightbox.appendChild(leftArrow);
     lightbox.appendChild(rightArrow);
-   
+    leftArrow.focus();
+    
+    /* BUG ACCESSIBILITE lightbox
+        rightArrow.addEventListener('focusout', () =>{
+        closelightbox.focus();
+    }) */
+
     return lightbox;
 }
 

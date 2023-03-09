@@ -92,12 +92,21 @@ function likeInteraction () {
 //fermeture modale de tri
 function closeOptions() {
   document.querySelector('.select-menu').style.display = "none";
+  //Accessibilité
+  document.querySelector('.selection').setAttribute("aria-expanded", "false");
 }
 
 //ouverture modale de tri
 function displayOptions() {
   document.querySelector('.select-menu').style.display = "flex";
+  //accessibilité
+  document.querySelector('.select-menu').children[0].focus();
+  document.querySelector('.selection').setAttribute("aria-expanded", "true");
 }
+
+//event de fermeture si l'utilisateur ne selectionne 
+//aucune option de tri via le clavier
+document.querySelector('.select-menu').children[2].addEventListener('focusout', closeOptions); 
 
 //event ouverture modale de tri
 const currentOption = document.querySelector('.option-selected');
@@ -162,6 +171,10 @@ dateOption.addEventListener('click', ()=> {
   closeOptions();
   orderByDate();
   currentOption.innerText = dateOption.innerText;
+  document.querySelector('.select-menu').setAttribute('aria-activedescendant', dateOption.innerText);
+  document.querySelector('#date').setAttribute('aria-selected', 'true')
+  document.querySelector('#title').setAttribute('aria-selected', 'false')
+  document.querySelector('#popularity').setAttribute('aria-selected', 'false')
 })
 
 //event tri par popularité
@@ -170,6 +183,10 @@ popularityOption.addEventListener('click', ()=> {
   closeOptions();
   orderByPopularity();
   currentOption.innerText = popularityOption.innerText;
+  document.querySelector('.select-menu').setAttribute('aria-activedescendant', popularityOption.innerText);
+  document.querySelector('#popularity').setAttribute('aria-selected', 'true')
+  document.querySelector('#title').setAttribute('aria-selected', 'false')
+  document.querySelector('#date').setAttribute('aria-selected', 'false')
 })
 
 //event tri par titre
@@ -178,7 +195,22 @@ titreOption.addEventListener('click', ()=> {
   closeOptions();
   orderByTitle();
   currentOption.innerText = titreOption.innerText;
+  document.querySelector('.select-menu').setAttribute('aria-activedescendant', titreOption.innerText);
+  document.querySelector('#title').setAttribute('aria-selected', 'true')
+  document.querySelector('#date').setAttribute('aria-selected', 'false')
+  document.querySelector('#popularity').setAttribute('aria-selected', 'false')
+
 })
+
+
+//Fonction d'accessibilité - SI 'Enter' est pressé, 
+//alors on simule un click de la souris sur l'élement
+function onKeyUp(e){
+  if (e.key === "Enter") {
+    e.target.click();
+    
+  };
+}
 
 
 /*Fonction principale*/
