@@ -2,40 +2,91 @@
 <html lang="fr">
   <head>
     <link href="./css/photographer.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <script src="https://kit.fontawesome.com/6f73f615f9.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <script
+      src="https://kit.fontawesome.com/6f73f615f9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <div class="container">
       <header>
         <a href="./index.html">
-          <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
-       </a>
+          <img
+            src="assets/images/logo.png"
+            class="logo"
+            alt="Fisheye Home page"
+          />
+        </a>
       </header>
       <main id="main">
-        <div class="photograph-header">
-          <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
-        </div>
-        <div class="sort-section">
-          <p class="sort-label">Trier par</p>
-          <div role="button" aria-haspopup="listbox" aria-expanded="false" class="selection">
-            <p class="option-selected" tabindex="0" onkeyup="onKeyUp(event)">Date</p>
-            <div aria-activedescendant="date" role="listbox" class="select-menu">
-              <p id="date" class="option" aria-selected="true" tabindex="0" onkeyup="onKeyUp(event)" aria-label="Trier par date">Date</p>
-              <p id="popularity" class="option" aria-selected="false" tabindex="0" onkeyup="onKeyUp(event)" aria-label="Trier par popularité">Popularité</p>
-              <p id="title" class="option" aria-selected="false" tabindex="0" onkeyup="onKeyUp(event)" aria-label="Trier par titre">Titre</p>
+        <section class="photograph-header">
+          <button
+            class="contact_button"
+            onclick="displayModal()"
+            aria-label="Contact Me"
+          >
+            Contactez-moi
+          </button>
+        </section>
+        <section class="sort-section">
+          <span class="sort-label">Trier par</span>
+          <div
+            role="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            class="selection"
+          >
+            <span class="option-selected" tabindex="0" onkeyup="onKeyUp(event)"
+              >Date
+            </span>
+            <div
+              aria-activedescendant="date"
+              role="listbox"
+              class="select-menu"
+            >
+              <span
+                id="date"
+                class="option"
+                aria-selected="true"
+                tabindex="0"
+                onkeyup="onKeyUp(event)"
+                aria-label="Trier par date"
+                >Date
+              </span>
+              <span
+                id="popularity"
+                class="option"
+                aria-selected="false"
+                tabindex="0"
+                onkeyup="onKeyUp(event)"
+                aria-label="Trier par popularité"
+                >Popularité
+              </span>
+              <span
+                id="title"
+                class="option"
+                aria-selected="false"
+                tabindex="0"
+                onkeyup="onKeyUp(event)"
+                aria-label="Trier par titre"
+                >Titre
+              </span>
             </div>
           </div>
-        </div>
+        </section>
         <div class="picture-section"></div>
         <div class="bground" aria-label="image closeup view"></div>
         <aside>
-          <p id="likes-total"></p>
+          <span id="likes-total"></span>
           <i aria-label="likes" class="fa-solid fa-heart heart fa-xl"></i>
-          <p id="price"></p>
+          <span id="price"></span>
         </aside>
       </main>
       <div id="contact_modal">
@@ -43,20 +94,61 @@
           <header>
             <h2>Contactez-moi</h2>
             <p id="contact-name"></p>
-            <img alt="Croix de fermeture" aria-label="Fermer la modale de contact" src="assets/icons/close.svg" onclick="closeModal()" onkeyup="onKeyUp(event)" tabindex="0"/>
+            <img
+              alt="Croix de fermeture"
+              aria-label="Fermer la modale de contact"
+              src="assets/icons/close.svg"
+              onclick="closeModal()"
+              onkeyup="onKeyUp(event)"
+              tabindex="0"
+            />
           </header>
           <form>
             <div>
-              <label id="prenom">Prénom</label>
-              <input aria-labelledby="prenom" type="text" id="first-name" class="input-modal" required>
-              <label id="nom">Nom</label>
-              <input aria-labelledby="nom" type="text" id="last-name" class="input-modal" required>
-              <label id="email">Email</label>
-              <input aria-labelledby="email" type="te xt" id="mail" class="input-modal" required>
-              <label id="message">Votre Message</label>
-              <input aria-labelledby="message" type="text" id="msg" class="input-modal" required>
+              <label for="first-name" id="prenom">Prénom</label>
+              <input
+                aria-labelledby="prenom"
+                name="first-name"
+                type="text"
+                id="first-name"
+                class="input-modal"
+                required
+              />
+              <label for="last-name" id="nom">Nom</label>
+              <input
+                aria-labelledby="nom"
+                name="last-name"
+                type="text"
+                id="last-name"
+                class="input-modal"
+                required
+              />
+              <label for="mail" id="email">Email</label>
+              <input
+                aria-labelledby="email"
+                type="text"
+                name="email"
+                id="mail"
+                class="input-modal"
+                required
+              />
+              <label for="msg" id="message">Votre Message</label>
+              <input
+                aria-labelledby="message"
+                name="msg"
+                type="text"
+                id="msg"
+                class="input-modal"
+                required
+              />
             </div>
-            <button aria-label="Envoi du formulaire" class="contact_button" id="send-button">Envoyer</button>
+            <button
+              aria-label="Envoi du formulaire"
+              class="contact_button"
+              id="send-button"
+            >
+              Envoyer
+            </button>
           </form>
         </div>
       </div>
