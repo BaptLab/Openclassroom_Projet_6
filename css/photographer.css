@@ -309,6 +309,7 @@ form #msg {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 6%;
+  margin-bottom: 300px;
 }
 
 .picture-section article img,
