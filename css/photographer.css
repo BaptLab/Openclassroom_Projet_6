@@ -322,7 +322,6 @@ form  #msg {
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
-    -webkit-transform: translateZ(0) 
 }
 
 .picture-section article .article-description {
