@@ -1,4 +1,5 @@
 /*Factory pattern de création des éléments lightBox*/
+
 function createLightbox(data, elementPosition) {
   //Récupération du DOM pour futur append
   const modalBg = document.querySelector(".bground");
@@ -15,6 +16,7 @@ function createLightbox(data, elementPosition) {
   const lightboxContainer = document.createElement("div");
   lightboxContainer.classList.add("lightbox-container");
   lightbox.classList.add("lightbox");
+  lightbox.setAttribute("aria-label", "image closeup view");
 
   //Initialisattion d'un compteur pour naviguer dans parmi les élements
   let i = elementPosition - 1;
@@ -23,7 +25,7 @@ function createLightbox(data, elementPosition) {
   const { image, video, title } = data[i];
 
   //SI le contenu est une vidéo
-  if (data[i].hasOwnProperty("video")) {
+  if (Object.prototype.hasOwnProperty.call(data[i], "video")) {
     //Création de l'élement lightbox vidéo
     const lightboxElement = document.createElement("video");
     lightboxElement.setAttribute(
@@ -47,7 +49,7 @@ function createLightbox(data, elementPosition) {
   }
 
   //Même principe SI le contenu est une image
-  else if (data[i].hasOwnProperty("image")) {
+  else if (Object.prototype.hasOwnProperty.call(data[i], "image")) {
     const lightboxElement = document.createElement("img");
     lightboxElement.setAttribute(
       "src",

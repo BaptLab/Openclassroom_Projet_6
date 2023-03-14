@@ -50,6 +50,7 @@
               aria-activedescendant="date"
               role="listbox"
               class="select-menu"
+              aria-label="sort options list"
             >
               <span
                 id="date"
@@ -57,7 +58,7 @@
                 aria-selected="true"
                 tabindex="0"
                 onkeyup="onKeyUp(event)"
-                aria-label="Trier par date"
+                aria-label="Tri par date"
                 >Date
               </span>
               <span
@@ -66,7 +67,7 @@
                 aria-selected="false"
                 tabindex="0"
                 onkeyup="onKeyUp(event)"
-                aria-label="Trier par popularité"
+                aria-label="Tri par popularité"
                 >Popularité
               </span>
               <span
@@ -75,17 +76,21 @@
                 aria-selected="false"
                 tabindex="0"
                 onkeyup="onKeyUp(event)"
-                aria-label="Trier par titre"
+                aria-label="Tri par titre"
                 >Titre
               </span>
             </div>
           </div>
         </section>
         <div class="picture-section"></div>
-        <div class="bground" aria-label="image closeup view"></div>
+        <div class="bground"></div>
         <aside>
           <span id="likes-total"></span>
-          <i aria-label="likes" class="fa-solid fa-heart heart fa-xl"></i>
+          <i
+            role="button"
+            aria-label="likes"
+            class="fa-solid fa-heart heart fa-xl"
+          ></i>
           <span id="price"></span>
         </aside>
       </main>

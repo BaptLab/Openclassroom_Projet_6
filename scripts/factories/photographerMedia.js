@@ -11,7 +11,7 @@ function displayMedia(data) {
     const pictureSection = document.querySelector(".picture-section");
 
     //création objet SI le contenu de l'objet est une VIDEO
-    if (data[i].hasOwnProperty("video")) {
+    if (Object.prototype.hasOwnProperty.call(data[i], "video")) {
       /*Création*/
 
       //Création de l'article (conteneur)
@@ -76,7 +76,7 @@ function displayMedia(data) {
     }
 
     //Même principe avec la création d'un élément SI le contenu de l'objet est une IMAGE
-    else if (data[i].hasOwnProperty("image")) {
+    else if (Object.prototype.hasOwnProperty.call(data[i], "image")) {
       /*Création*/
       const pictureArticle = document.createElement("article");
       pictureArticle.classList.add("picture-article");

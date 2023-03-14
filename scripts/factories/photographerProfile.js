@@ -1,7 +1,7 @@
 /*factory pattern pour la génération du profil du photographe sur sa page personnelle*/
 function displayProfile(data) {
   const photographersHeader = document.querySelector(".photograph-header");
-  const { name, portrait, city, country, tagline, price, id } = data;
+  const { name, portrait, city, country, tagline, price } = data;
   const picture = `./assets/photographers/Sample Photos/Photographers ID Photos/${portrait}`;
 
   //creation du div avec nom/city/country/tagline
