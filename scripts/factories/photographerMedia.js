@@ -3,7 +3,7 @@ function displayMedia(data) {
   //data est un tableau comprenant toutes les photos/vidéos (objets) du photographe en question
 
   //boucle qui parcoure  chaque objet du tableau
-  for (i = 0; i < data.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     //récupération des propriété utiles de chaque objet (photo ou vidéo) du tableau
     const { image, title, video, likes } = data[i];
 
