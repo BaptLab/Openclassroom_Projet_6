@@ -6,8 +6,8 @@ async function displayModal() {
   document.querySelector("#first-name").focus();
 
   //récupération de la donnée "name" relative au photographe en question
-  data = await getPhotographers();
-  nameOfPhotographer = data[1].name;
+  let data = await getPhotographers();
+  let nameOfPhotographer = data[1].name;
   document.querySelector(
     "header h2"
   ).innerText = `Contactez-moi ${nameOfPhotographer}`;
@@ -55,6 +55,12 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
+//Définition des variable en amont;
+let firstName;
+let lastName;
+let mail;
+let msg;
 
 /*Récupération des inputs de la modale de contact*/
 document.querySelector("#first-name").addEventListener("change", (e) => {

@@ -1,6 +1,9 @@
 {
   "extends": ["eslint:recommended"],
-  "rules": {},
+  "rules": {
+    "no-unused-vars":"off",
+    "no-undef": "off"
+  },
   "parserOptions": {
     "ecmaVersion": "latest"
   },
