@@ -204,7 +204,7 @@ form #msg {
   position: relative;
   z-index: 1;
   height: 18px;
-  rotate: 90deg;
+  transform: rotate(90deg);
   right: 40px;
   top: 5px;
   filter: invert(1);
@@ -227,7 +227,7 @@ form #msg {
 
 .option-selected::after {
   content: "\003E";
-  rotate: 90deg;
+  transform: rotate(90deg);
   font-size: 32px;
   position: absolute;
   right: 20px;
@@ -272,7 +272,7 @@ form #msg {
 
 #option1::after {
   content: "\003E";
-  rotate: -90deg;
+  transform: rotate(-90deg);
   position: absolute;
   right: 20px;
   top: 9px;
@@ -413,7 +413,7 @@ video {
   width: 42px;
   top: 50%;
   left: -70px;
-  rotate: 180deg;
+  transform: rotate(180deg);
   height: auto;
   cursor: pointer;
 }
