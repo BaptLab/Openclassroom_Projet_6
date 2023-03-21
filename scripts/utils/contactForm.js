@@ -78,9 +78,54 @@ document.querySelector("#msg").addEventListener("change", (e) => {
 
 /*Evenement d'envoi des inputs de la modale de contact*/
 const sendFrom = document.querySelector("#send-button");
+let firstNameInput = true;
+let lastNameInput = true;
+let mailInput = true;
+let msgInput = true;
+
 sendFrom.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log(firstName, lastName, mail, msg);
+
+  if (firstName === "" || firstName === undefined || firstName.length < 2) {
+    document.getElementById("first-name").classList.add("error");
+    firstNameInput = false;
+  } else {
+    document.getElementById("first-name").classList.remove("error");
+    firstNameInput = true;
+  }
+
+  if (lastName === "" || lastName === undefined || lastName.length < 2) {
+    document.getElementById("last-name").classList.add("error");
+    lastNameInput = false;
+  } else {
+    document.getElementById("last-name").classList.remove("error");
+    lastNameInput = true;
+  }
+
+  if (mail === "" || mail === undefined || mail.length < 3) {
+    document.getElementById("mail").classList.add("error");
+    mailInput = false;
+  } else {
+    document.getElementById("mail").classList.remove("error");
+    mailInput = true;
+  }
+
+  if (msg === "" || msg === undefined || msg.length < 2) {
+    document.getElementById("msg").classList.add("error");
+    msgInput = false;
+  } else {
+    document.getElementById("msg").classList.remove("error");
+    msgInput = true;
+  }
+
+  if (
+    firstNameInput == true &&
+    lastNameInput == true &&
+    mailInput == true &&
+    msgInput == true
+  ) {
+    console.log(firstName, lastName, mail, msg);
+  }
 });
 
 //SI clic en dehors de la modale -> fermeture de la modale de contact

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html xml:lang="fr" lang="fr">
   <head>
     <link
       href="./css/prefixed/photographer.css"
@@ -115,34 +115,36 @@
           </header>
           <form>
             <div>
-              <label for="first-name" id="prenom">Prénom</label>
+              <label for="first-name" id="prenom">Prénom*</label>
               <input
                 aria-labelledby="prenom"
                 name="first-name"
                 type="text"
                 id="first-name"
                 class="input-modal"
+                minlength="2"
                 required
               />
-              <label for="last-name" id="nom">Nom</label>
+              <label for="last-name" id="nom">Nom*</label>
               <input
                 aria-labelledby="nom"
                 name="last-name"
                 type="text"
                 id="last-name"
                 class="input-modal"
+                minlength="2"
                 required
               />
-              <label for="mail" id="email">Email</label>
+              <label for="mail" id="email">Email*</label>
               <input
                 aria-labelledby="email"
-                type="text"
                 name="email"
                 id="mail"
                 class="input-modal"
+                type="email"
                 required
               />
-              <label for="msg" id="message">Votre Message</label>
+              <label for="msg" id="message">Votre Message*</label>
               <input
                 aria-labelledby="message"
                 name="msg"
@@ -151,6 +153,7 @@
                 class="input-modal"
                 required
               />
+              <span>* Obligatoire</span>
             </div>
             <button
               aria-label="Envoi du formulaire"
