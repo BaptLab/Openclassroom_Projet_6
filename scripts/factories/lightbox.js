@@ -100,7 +100,7 @@ function displayLightboxElement(data, elementPosition) {
   //Récupération des données utiles de la bd json
 
   //On remplace les espaces dans les données de nom par un "_" comme dans les fichiers
-  cleanName = profileData.name.replace(/\s/g, "_");
+  let cleanName = profileData.name.replace(/\s/g, "_");
 
   for (let j = 0; j < data.length; j++) {
     const { image, video, title } = data[j];
@@ -175,8 +175,6 @@ function displayLightboxElement(data, elementPosition) {
   /*Navigation dans les élements lightbox*/
   function nextSlide() {
     //SI ce n'est PAS le dernier élement ET l'élément de "transition"
-    console.log(elementPosition);
-    console.log(data.length);
     if (elementPosition < data.length && elementPosition != 0) {
       document.querySelector("#element" + elementPosition).style.display =
         "none";
@@ -210,7 +208,6 @@ function displayLightboxElement(data, elementPosition) {
 
   //Même principe en sens inverse
   function previousSlide() {
-    console.log(elementPosition);
     if (elementPosition > 1 && elementPosition != data.length + 1) {
       document.querySelector("#element" + elementPosition).style.display =
         "none";

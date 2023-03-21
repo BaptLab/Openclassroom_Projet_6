@@ -2,7 +2,7 @@
 function displayMedia(data) {
   //data est un tableau comprenant toutes les photos/vidéos (objets) du photographe en question
   //On remplace les espaces dans les données de nom par un "_" comme dans les fichiers
-  cleanName = profileData.name.replace(/\s/g, "_");
+  let cleanName = profileData.name.replace(/\s/g, "_");
   //boucle qui parcoure  chaque objet du tableau
   for (let i = 0; i < data.length; i++) {
     //récupération des propriété utiles de chaque objet (photo ou vidéo) du tableau
