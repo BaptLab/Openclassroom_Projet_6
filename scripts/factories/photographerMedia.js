@@ -137,7 +137,8 @@ function displayMedia(data) {
     contents[i].addEventListener("click", (elementClicked) => {
       //on récupère la position de l'élement inscrite via son attribut ID
       const elementPosition = elementClicked.target.parentElement.id;
-      createLightbox(data, elementPosition);
+      createLightbox();
+      displayLightboxElement(data, elementPosition);
     });
   }
 }
