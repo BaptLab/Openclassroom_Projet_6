@@ -2,7 +2,7 @@
 function displayProfile(data) {
   const photographersHeader = document.querySelector(".photograph-header");
   const { name, portrait, city, country, tagline, price } = data;
-  const picture = `./assets/photographers/Sample Photos/Photographers ID Photos/${portrait}`;
+  const picture = `./assets/photographers/Sample_Photos/Photographers_ID_Photos/${portrait}`;
 
   //creation du div avec nom/city/country/tagline
   const infos = document.createElement("div");

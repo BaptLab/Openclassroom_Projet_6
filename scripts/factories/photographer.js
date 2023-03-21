@@ -1,7 +1,7 @@
 /*factory pattern pour afficher les différents profils de photograhes sur la page d'accueil*/
 function photographerFactory(data) {
   const { name, portrait, city, country, tagline, price, id } = data; // => name = data.name & portrait = data.portrait --> nouvel syntaxe es6
-  const picture = `./assets/photographers/Sample Photos/Photographers ID Photos/${portrait}`; //portrait = data.portrait
+  const picture = `./assets/photographers/Sample_Photos/Photographers_ID_Photos/${portrait}`; //portrait = data.portrait
 
   //fonction de modification du DOM = création de la card portrait
   function getUserCardDOM() {
@@ -11,7 +11,7 @@ function photographerFactory(data) {
     //Img
     const photographersPicture = document.createElement("img");
     photographersPicture.setAttribute("src", picture);
-    photographersPicture.setAttribute("alt", "");
+    photographersPicture.setAttribute("alt", name);
 
     //Name
     const photographerName = document.createElement("h2");

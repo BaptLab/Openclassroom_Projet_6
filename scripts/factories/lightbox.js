@@ -99,6 +99,9 @@ function displayLightboxElement(data, elementPosition) {
   lightboxContainer = document.querySelector(".lightbox-container");
   //Récupération des données utiles de la bd json
 
+  //On remplace les espaces dans les données de nom par un "_" comme dans les fichiers
+  cleanName = profileData.name.replace(/\s/g, "_");
+
   for (let j = 0; j < data.length; j++) {
     const { image, video, title } = data[j];
     //SI le contenu est une vidéo
@@ -107,7 +110,7 @@ function displayLightboxElement(data, elementPosition) {
       const lightboxElement = document.createElement("video");
       lightboxElement.setAttribute(
         "src",
-        `./assets/photographers/Sample Photos/${profileData.name}/${video}`
+        `./assets/photographers/Sample_Photos/${cleanName}/${video}`
       );
       lightboxElement.setAttribute("id", `element${j + 1}`);
       lightboxElement.classList.add("lightbox-element");
@@ -140,7 +143,7 @@ function displayLightboxElement(data, elementPosition) {
       const lightboxElement = document.createElement("img");
       lightboxElement.setAttribute(
         "src",
-        `./assets/photographers/Sample Photos/${profileData.name}/${image}`
+        `./assets/photographers/Sample_Photos/${cleanName}/${image}`
       );
       lightboxElement.setAttribute("id", `element${j + 1}`);
       lightboxElement.classList.add("lightbox-element");

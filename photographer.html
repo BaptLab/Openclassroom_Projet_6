@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xml:lang="fr" lang="fr">
+<html lang="fr">
   <head>
     <link
       href="./css/prefixed/photographer.css"
@@ -41,9 +41,10 @@
           </button>
         </section>
         <section class="sort-section">
-          <span class="sort-label">Trier par</span>
+          <h4 class="sort-label">Trier par</h4>
           <div
-            role="button"
+            aria-label="trier par"
+            role="listbox"
             aria-haspopup="listbox"
             aria-expanded="false"
             class="selection"
@@ -53,11 +54,12 @@
             </span>
             <div
               aria-activedescendant="date"
-              role="listbox"
+              role="tree"
               class="select-menu"
               aria-label="sort options list"
             >
               <span
+                role="treeitem"
                 id="date"
                 class="option"
                 aria-selected="true"
@@ -67,6 +69,7 @@
                 >Date
               </span>
               <span
+                role="treeitem"
                 id="popularity"
                 class="option"
                 aria-selected="false"
@@ -76,6 +79,7 @@
                 >Popularité
               </span>
               <span
+                role="treeitem"
                 id="title"
                 class="option"
                 aria-selected="false"
@@ -91,11 +95,11 @@
         <div class="bground"></div>
         <aside>
           <span id="likes-total"></span>
-          <i
+          <span
             role="button"
             aria-label="likes"
             class="fa-solid fa-heart heart fa-xl"
-          ></i>
+          ></span>
           <span id="price"></span>
         </aside>
       </main>

@@ -1,7 +1,8 @@
 /*Factory Pattern des contenus photos/vidéo*/
 function displayMedia(data) {
   //data est un tableau comprenant toutes les photos/vidéos (objets) du photographe en question
-
+  //On remplace les espaces dans les données de nom par un "_" comme dans les fichiers
+  cleanName = profileData.name.replace(/\s/g, "_");
   //boucle qui parcoure  chaque objet du tableau
   for (let i = 0; i < data.length; i++) {
     //récupération des propriété utiles de chaque objet (photo ou vidéo) du tableau
@@ -24,9 +25,9 @@ function displayMedia(data) {
       videoContent.classList.add("content");
       videoContent.setAttribute(
         "src",
-        `./assets/photographers/Sample Photos/${profileData.name}/${video}`
+        `./assets/photographers/Sample_Photos/${cleanName}/${video}`
       );
-      videoContent.setAttribute("alt", title);
+      videoContent.setAttribute("title", title);
       //accessibilité
       videoContent.setAttribute("tabindex", "0");
       videoContent.setAttribute("onkeyup", "onKeyUp(event)");
@@ -47,8 +48,9 @@ function displayMedia(data) {
       const likesCount = document.createElement("span");
       likesCount.innerText = likes;
 
-      const heart = document.createElement("i");
+      const heart = document.createElement("span");
       heart.setAttribute("aria-label", "likes");
+      heart.setAttribute("role", "button");
       heart.classList.add("no-liked");
       heart.classList.add("like-btn");
       heart.classList.add("fa-regular");
@@ -86,7 +88,7 @@ function displayMedia(data) {
       pictureContent.classList.add("content");
       pictureContent.setAttribute(
         "src",
-        `./assets/photographers/Sample Photos/${profileData.name}/${image}`
+        `./assets/photographers/Sample_Photos/${cleanName}/${image}`
       );
       pictureContent.setAttribute("alt", title);
       //accessibilité
@@ -103,8 +105,9 @@ function displayMedia(data) {
       likesCount.classList.add("likes");
       likesCount.innerText = likes;
 
-      const heart = document.createElement("i");
+      const heart = document.createElement("span");
       heart.setAttribute("aria-label", "likes");
+      heart.setAttribute("role", "button");
       heart.classList.add("like-btn");
       heart.classList.add("no-liked");
       heart.classList.add("fa-regular");

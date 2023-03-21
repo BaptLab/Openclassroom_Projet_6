@@ -344,13 +344,13 @@ video {
 .picture-section article .article-description .count-section {
   display: flex;
 }
-.picture-section article .article-description .count-section i {
+.picture-section article .article-description .count-section .like-btn {
   display: flex;
   align-items: self-start;
   margin-top: 3px;
 }
 
-.picture-section article .article-description .count-section i:hover {
+.picture-section article .article-description .count-section .like-btn:hover {
   cursor: pointer;
 }
 
