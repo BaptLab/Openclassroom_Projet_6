@@ -1,7 +1,8 @@
+const modalBg = document.querySelector(".bground");
+
 /*Factory pattern de création des éléments lightBox*/
 function createLightbox() {
   //Récupération du DOM pour futur append
-  const modalBg = document.querySelector(".bground");
   modalBg.style.display = "block";
 
   //création de la section relatif au contenu lightbox et ajout au DOM
@@ -28,11 +29,6 @@ function createLightbox() {
   closelightbox.classList.add("close-lightbox");
   closelightbox.classList.add("nav-btn");
   lightbox.appendChild(closelightbox);
-
-  function closinglightbox() {
-    modalBg.innerHTML = "";
-    modalBg.style.display = "none";
-  }
   closelightbox.addEventListener("click", closinglightbox);
 
   /*Création boutons de navigation*/
@@ -57,44 +53,10 @@ function createLightbox() {
   /*ajout des flêches au DOM*/
   lightbox.appendChild(leftArrow);
   lightbox.appendChild(rightArrow);
-
-  rightArrow.focus();
-
-  /*Focus Loop*/
-  /* Récupération des différents élements focusable*/
-  const focusableElements = ".nav-btn";
-  const firstFocusableElement = lightbox.querySelectorAll(focusableElements)[0];
-  const focusableContent = lightbox.querySelectorAll(focusableElements);
-  const lastFocusableElement = focusableContent[focusableContent.length - 1];
-
-  document.addEventListener("keydown", function (e) {
-    let isTabPressed = e.key === "Tab" || e.keyCode === 9;
-
-    if (!isTabPressed) {
-      return;
-    }
-
-    if (e.shiftKey) {
-      // if shift key pressed for shift + tab combination
-      if (document.activeElement === firstFocusableElement) {
-        lastFocusableElement.focus(); // add focus for the last focusable element
-        e.preventDefault();
-      }
-    } else {
-      // if tab key is pressed
-      if (document.activeElement === lastFocusableElement) {
-        // if focused has reached to last focusable element then focus first focusable element after pressing tab
-        firstFocusableElement.focus(); // add focus for the first focusable element
-        e.preventDefault();
-      }
-    }
-  });
-  rightArrow.focus();
-
-  return lightbox;
 }
 
-function displayLightboxElement(data, elementPosition) {
+/*Fonction d'affichage des élement*/
+function displayLightboxElement(elementPosition, data) {
   //Initialisattion d'un compteur pour naviguer dans parmi les élements
   lightboxContainer = document.querySelector(".lightbox-container");
   //Récupération des données utiles de la bd json
@@ -171,85 +133,123 @@ function displayLightboxElement(data, elementPosition) {
       lightboxContainer.appendChild(lightboxElementDescription);
     }
   }
+  return elementPosition;
+}
 
-  /*Navigation dans les élements lightbox*/
-  function nextSlide() {
-    //SI ce n'est PAS le dernier élement ET l'élément de "transition"
-    if (elementPosition < data.length && elementPosition != 0) {
-      document.querySelector("#element" + elementPosition).style.display =
-        "none";
-      document.querySelector("#description" + elementPosition).style.display =
-        "none";
-      elementPosition++;
-      document.querySelector("#element" + elementPosition).style.display =
-        "block";
-      document.querySelector("#description" + elementPosition).style.display =
-        "block";
-    }
-    //SI c'est le dernier élement de la boucle
-    else if (elementPosition == data.length) {
-      document.querySelector("#element" + elementPosition).style.display =
-        "none";
-      document.querySelector("#description" + elementPosition).style.display =
-        "none";
-      //on attribue une valeur de transition et on relance la fonction
-      elementPosition = 0;
-      nextSlide();
-    }
-    //Si il s'agit de la valeur de transition
-    else {
-      elementPosition++;
-      document.querySelector("#element" + elementPosition).style.display =
-        "block";
-      document.querySelector("#description" + elementPosition).style.display =
-        "block";
-    }
-  }
+let handleClickFunction;
+let handleKeyupFunction;
 
-  //Même principe en sens inverse
-  function previousSlide() {
-    if (elementPosition > 1 && elementPosition != data.length + 1) {
-      document.querySelector("#element" + elementPosition).style.display =
-        "none";
-      document.querySelector("#description" + elementPosition).style.display =
-        "none";
-      elementPosition--;
-      document.querySelector("#element" + elementPosition).style.display =
-        "block";
-      document.querySelector("#description" + elementPosition).style.display =
-        "block";
-    } else if (elementPosition == 1) {
-      document.querySelector("#element" + elementPosition).style.display =
-        "none";
-      document.querySelector("#description" + elementPosition).style.display =
-        "none";
-      elementPosition = data.length + 1;
-      previousSlide();
-    } else {
-      elementPosition--;
-      document.querySelector("#element" + elementPosition).style.display =
-        "block";
-      document.querySelector("#description" + elementPosition).style.display =
-        "block";
+function handleClickAndKeyup(elementPosition, data) {
+  handleClickFunction = function () {
+    if (handleClickFunction) {
+      document.removeEventListener("click", handleClickFunction);
     }
-  }
+  };
 
-  //event de pression des touches <- & -> du clavier
-  document.addEventListener("keydown", (event) => {
+  document.querySelector(".right-arrow").addEventListener("click", function () {
+    elementPosition = nextSlide(elementPosition, data);
+  });
+  document.querySelector(".left-arrow").addEventListener("click", function () {
+    elementPosition = previousSlide(elementPosition, data);
+  });
+
+  document.addEventListener("click", handleClickFunction);
+
+  handleKeyupFunction = function (event) {
+    event.stopPropagation();
     if (event.key === "ArrowRight") {
-      nextSlide();
+      elementPosition = nextSlide(elementPosition, data);
     }
     if (event.key === "ArrowLeft") {
-      previousSlide();
+      elementPosition = previousSlide(elementPosition, data);
     }
     if (event.key === "Escape") {
       closinglightbox();
     }
-  });
+  };
+  document.addEventListener("keyup", handleKeyupFunction);
+}
 
-  //event en cas de clic sur les flêches
-  document.querySelector(".right-arrow").addEventListener("click", nextSlide);
-  document
-    .querySelector(".left-arrow")
-    .addEventListener("click", previousSlide);
+function closinglightbox() {
+  modalBg.innerHTML = "";
+  modalBg.style.display = "none";
+  document.removeEventListener("keyup", handleKeyupFunction);
+}
+
+function nextSlide(elementPosition, data) {
+  console.log(elementPosition);
+  console.log(data);
+  if (elementPosition < data.length) {
+    document.querySelector("#element" + elementPosition).style.display = "none";
+    document.querySelector("#description" + elementPosition).style.display = "none";
+    elementPosition++;
+    document.querySelector("#element" + elementPosition).style.display = "block";
+    document.querySelector("#description" + elementPosition).style.display = "block";
+  } else {
+    document.querySelector("#element" + elementPosition).style.display = "none";
+    document.querySelector("#description" + elementPosition).style.display = "none";
+    elementPosition = 1;
+    document.querySelector("#element" + elementPosition).style.display = "block";
+    document.querySelector("#description" + elementPosition).style.display = "block";
+  }
+  return elementPosition;
+}
+
+function previousSlide(elementPosition, data) {
+  if (elementPosition > 1) {
+    document.querySelector("#element" + elementPosition).style.display = "none";
+    document.querySelector("#description" + elementPosition).style.display = "none";
+    elementPosition--;
+    document.querySelector("#element" + elementPosition).style.display = "block";
+    document.querySelector("#description" + elementPosition).style.display = "block";
+  } else {
+    document.querySelector("#element" + elementPosition).style.display = "none";
+    document.querySelector("#description" + elementPosition).style.display = "none";
+    elementPosition = data.length;
+    document.querySelector("#element" + elementPosition).style.display = "block";
+    document.querySelector("#description" + elementPosition).style.display = "block";
+  }
+  return elementPosition;
+}
+
+let focusTrapFunction;
+
+function focusTrap() {
+  const focusableElements = ".nav-btn";
+  const lightbox = document.querySelector(".lightbox");
+  const rightArrow = document.querySelector(".right-arrow");
+  const firstFocusableElement = lightbox.querySelectorAll(focusableElements)[0];
+  const focusableContent = lightbox.querySelectorAll(focusableElements);
+  const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+  function handleFocusTrap(event) {
+    let isTabPressed = event.key === "Tab" || event.keyCode === 9;
+    if (event.shiftKey) {
+      // if shift key pressed for shift + tab combination
+      if (document.activeElement === firstFocusableElement) {
+        lastFocusableElement.focus(); // add focus for the last focusable element
+        event.preventDefault();
+      }
+    } else {
+      // if tab key is pressed
+      if (document.activeElement === lastFocusableElement) {
+        // if focused has reached to last focusable element then focus first focusable element after pressing tab
+        firstFocusableElement.focus(); // add focus for the first focusable element
+        event.preventDefault();
+      }
+    }
+  }
+  if (focusTrapFunction) {
+    document.removeEventListener("keydown", focusTrapFunction);
+  }
+  focusTrapFunction = handleFocusTrap;
+  document.addEventListener("keydown", handleFocusTrap);
+  rightArrow.focus();
+}
+
+function initLightbox(elementPosition, data) {
+  createLightbox();
+  displayLightboxElement(elementPosition, data);
+  handleClickAndKeyup(elementPosition, data);
+  focusTrap();
 }

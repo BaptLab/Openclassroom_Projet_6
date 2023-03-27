@@ -214,8 +214,7 @@ function onKeyUp(e) {
 async function init() {
   //cloisonnement des deux groupes de données récupérés
 
-  const [mediaData, profileData] = await getPhotographers();
-
+  [mediaData, profileData] = await getPhotographers();
   displayProfile(profileData);
   displayMedia(mediaData);
   likeInteraction();

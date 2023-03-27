@@ -131,17 +131,18 @@ function displayMedia(data) {
       pictureSection.appendChild(pictureArticle);
     }
   }
-
   /*Event de création de lightbox*/
+  lightboxClick(data);
+}
 
+function lightboxClick(data) {
   const contents = document.querySelectorAll(".content");
   //On parcourt chaque élement vidéo/photo pour y ajouter l'évènement
   for (let i = 0; i < contents.length; i++) {
     contents[i].addEventListener("click", (elementClicked) => {
       //on récupère la position de l'élement inscrite via son attribut ID
-      const elementPosition = elementClicked.target.parentElement.id;
-      createLightbox();
-      displayLightboxElement(data, elementPosition);
+      const elementPosition = parseInt(elementClicked.target.parentElement.id);
+      initLightbox(elementPosition, data);
     });
   }
 }
