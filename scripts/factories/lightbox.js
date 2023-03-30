@@ -183,12 +183,18 @@ function nextSlide(elementPosition, data) {
     document.querySelector("#element" + elementPosition).style.display = "none";
     document.querySelector("#description" + elementPosition).style.display = "none";
     elementPosition++;
+    if (document.querySelector("#element" + elementPosition).nodeName == "VIDEO") {
+      document.querySelector("#element" + elementPosition).currentTime = 0;
+    }
     document.querySelector("#element" + elementPosition).style.display = "block";
     document.querySelector("#description" + elementPosition).style.display = "block";
   } else {
     document.querySelector("#element" + elementPosition).style.display = "none";
     document.querySelector("#description" + elementPosition).style.display = "none";
     elementPosition = 1;
+    if (document.querySelector("#element" + elementPosition).nodeName == "VIDEO") {
+      document.querySelector("#element" + elementPosition).currentTime = 0;
+    }
     document.querySelector("#element" + elementPosition).style.display = "block";
     document.querySelector("#description" + elementPosition).style.display = "block";
   }
@@ -200,12 +206,18 @@ function previousSlide(elementPosition, data) {
     document.querySelector("#element" + elementPosition).style.display = "none";
     document.querySelector("#description" + elementPosition).style.display = "none";
     elementPosition--;
+    if (document.querySelector("#element" + elementPosition).nodeName == "VIDEO") {
+      document.querySelector("#element" + elementPosition).currentTime = 0;
+    }
     document.querySelector("#element" + elementPosition).style.display = "block";
     document.querySelector("#description" + elementPosition).style.display = "block";
   } else {
     document.querySelector("#element" + elementPosition).style.display = "none";
     document.querySelector("#description" + elementPosition).style.display = "none";
     elementPosition = data.length;
+    if (document.querySelector("#element" + elementPosition).nodeName == "VIDEO") {
+      document.querySelector("#element" + elementPosition).currentTime = 0;
+    }
     document.querySelector("#element" + elementPosition).style.display = "block";
     document.querySelector("#description" + elementPosition).style.display = "block";
   }
