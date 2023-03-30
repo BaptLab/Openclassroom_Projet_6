@@ -224,24 +224,30 @@ function focusTrap() {
 
   function handleFocusTrap(event) {
     let isTabPressed = event.key === "Tab" || event.keyCode === 9;
-    if (event.shiftKey) {
+    let isEnterPressed = event.key === "Enter" || event.keyCode === 13;
+    if (event.shiftKey && isTabPressed) {
       // if shift key pressed for shift + tab combination
       if (document.activeElement === firstFocusableElement) {
         lastFocusableElement.focus(); // add focus for the last focusable element
         event.preventDefault();
       }
-    } else {
+    } else if (isTabPressed) {
       // if tab key is pressed
       if (document.activeElement === lastFocusableElement) {
-        // if focused has reached to last focusable element then focus first focusable element after pressing tab
         firstFocusableElement.focus(); // add focus for the first focusable element
         event.preventDefault();
       }
+    } else if (isEnterPressed && document.activeElement === lastFocusableElement) {
+      // if enter key is pressed on the last focusable element
+      event.preventDefault();
+      lastFocusableElement.click(); // trigger click event on the last focusable element
     }
   }
+
   if (focusTrapFunction) {
     document.removeEventListener("keydown", focusTrapFunction);
   }
+
   focusTrapFunction = handleFocusTrap;
   document.addEventListener("keydown", handleFocusTrap);
   rightArrow.focus();
