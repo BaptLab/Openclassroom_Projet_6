@@ -177,8 +177,6 @@ function closinglightbox() {
 }
 
 function nextSlide(elementPosition, data) {
-  console.log(elementPosition);
-  console.log(data);
   if (elementPosition < data.length) {
     document.querySelector("#element" + elementPosition).style.display = "none";
     document.querySelector("#description" + elementPosition).style.display = "none";
